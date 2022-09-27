@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 import numpy as np
 
-t_matrix = 1
+t_matrix = ""
 
 while t_matrix != 22:
     matrix= np.random.randint(0,2, size=(8,8))
@@ -36,8 +36,8 @@ positions = {
     }
 
 class Ui_MainWindow(object):
-    def setupUi(self, MainWindow, t_matrix):
-        t_matrix = t_matrix
+    def setupUi(self, MainWindow):
+        
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(650, 750)
         MainWindow.setMinimumSize(QtCore.QSize(650, 750))
@@ -1011,7 +1011,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-    t_matrix = 22
+   
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "BATTLESHIP"))
@@ -1185,6 +1185,7 @@ class Ui_MainWindow(object):
             
             print("ACERTOU")  
             t_matrix-=1
+            return t_matrix
         else:
             print("AGUA")
 
@@ -1196,7 +1197,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
-    ui.setupUi(MainWindow, t_matrix)
+    ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
 
